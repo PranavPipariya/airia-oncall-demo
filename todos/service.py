@@ -26,11 +26,7 @@ class TodoService:
         todo = self.get(todo_id)
         if todo is None:
             return None
-        # BUG: negates the current value instead of setting to True.
-        # First call: False → True  ✓  (works by accident)
-        # Second call: True → False ✗  (un-completes a completed todo)
-        # A todo that starts completed would immediately un-complete.
-        todo.completed = not todo.completed
+        todo.completed = True
         return todo
 
     def delete(self, todo_id: int) -> bool:
